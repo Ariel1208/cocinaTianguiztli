@@ -1,0 +1,28 @@
+<ion-app>
+    <ion-split-pane contentId="main-content">
+        <ion-menu menuId="custom-menu" contentId="main-content" type="overlay">
+            <ion-content>
+                <ion-list class="ion-text-center main-header">
+                    <div align="center">
+                        <ion-avatar>
+                            <img src="../assets/img-app/icon_1024.jpeg">
+                        </ion-avatar>
+                        <ion-label color="white">
+                            Comercializadora Tianguiztli
+                            <p>
+                                <ion-text>2345432 | ejemplo@tianguiztli.com</ion-text>
+                            </p>
+                        </ion-label>
+                    </div>
+                </ion-list>
+                <ion-menu-toggle class="menu-items" [autoHide]="false" *ngFor="let page of appPages; let i = index">
+                    <ion-item color="tian" class="ion-padding-start" [routerLink]="[page.url]" lines="none" detail="false" routerDirection="root" routerLinkActive="selected">
+                        <ion-icon slot="start" [ios]="page.icon+'-outline'" [md]="page.icon+'-sharp'"></ion-icon>
+                        <ion-label>{{page.title}}</ion-label>
+                    </ion-item>
+                </ion-menu-toggle>
+            </ion-content>
+        </ion-menu>
+        <ion-router-outlet id="main-content"></ion-router-outlet>
+    </ion-split-pane>
+</ion-app>

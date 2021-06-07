@@ -1,0 +1,7 @@
+{
+  "name": "movilTianguiztli",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
