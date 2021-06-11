@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { ActionSheetController } from '@ionic/angular';
+
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',

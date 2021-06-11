@@ -1,6 +1,6 @@
 ion-menu ion-content {
     * {
-        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial;
     }
     letter-spacing: 0.5px;
     --background: linear-gradient(90deg, #eff0f3 0%, #eff0f3 100%);
@@ -38,12 +38,12 @@ ion-menu ion-content {
             --background: rgba(#3da9fc, 0.14);
             border-left: 5px solid #3da9fc;
             ion-label {
-                color: #5f6c7b;
+                color: #0075fc;
                 font-weight: bold;
             }
         }
         ion-item.selected ion-icon {
-            color: var(#094067);
+            color: var(#0075fc);
         }
     }
 }

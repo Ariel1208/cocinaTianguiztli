@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MenuController } from '@ionic/angular';
+import { ActionSheetController, MenuController } from '@ionic/angular';
 import { ApiResponseService } from '../service/api-response.service';
 
 
@@ -19,7 +19,8 @@ export class InicioPage implements OnInit {
 
   constructor(
     private menu:MenuController,
-    private servicio:ApiResponseService
+    private servicio:ApiResponseService,
+    public actionSheetController: ActionSheetController
     ) { }
 
   ngOnInit() {
@@ -65,5 +66,48 @@ export class InicioPage implements OnInit {
     slidesPerView: 1
   }
 
+  async presentActionSheet() {
+    const actionSheet = await this.actionSheetController.create({
+      header: 'Opciones',
+      cssClass: 'my-custom-class',
+      buttons: [{
+        text: 'Ver encuestas',
+        role: 'destructive',
+        icon: 'receipt',
+        handler: () => {
+          console.log('Delete clicked');
+        }
+      }, {
+        text: 'Buscar platillos',
+        icon: 'search',
+        handler: () => {
+          console.log('Share clicked');
+        }
+      }, {
+        text: 'Agregar comentario',
+        icon: 'add',
+        handler: () => {
+          console.log('Play clicked');
+        }
+      }, {
+        text: 'Agregar menu a favoritos',
+        icon: 'heart',
+        handler: () => {
+          console.log('Favorite clicked');
+        }
+      }, {
+        text: 'Cerrar',
+        icon: 'close',
+        role: 'cancel',
+        handler: () => {
+          console.log('Cancel clicked');
+        }
+      }]
+    });
+    await actionSheet.present();
+
+    const { role } = await actionSheet.onDidDismiss();
+    console.log('onDidDismiss resolved with role', role);
+  }
 
 }

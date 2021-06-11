@@ -8,14 +8,24 @@ import { ApiResponseService } from '../service/api-response.service';
 })
 export class PagosServicioPage implements OnInit {
 
-  arrayPagos:any =[];
+  arrayDatos:any =[];
+
+  arrayPagos:any=[];
+  arrayAdeudos:any=[];
 
   constructor(
     private service:ApiResponseService
   ) { }
 
+
+
   ngOnInit() {
     this.getPagosUsuario();
+    this.getAdeudosUsuarios();
+    this.service.getAdeudos().then(res =>{
+      this.arrayDatos = res;
+      
+    })
   }
 
   getPagosUsuario(){
@@ -24,5 +34,21 @@ export class PagosServicioPage implements OnInit {
       console.log(res);
       
     })
+  }
+
+  getAdeudosUsuarios(){
+    this.service.getAdeudos().then(res =>{
+      this.arrayAdeudos = res;
+      console.log(res);
+      
+    })
+  }
+
+  segmentChanged(ev: any) {
+    if(ev.detail.value == "pagos"){
+      this.arrayDatos = this.arrayPagos;
+    }else{
+      this.arrayDatos = this.arrayAdeudos;
+    }
   }
 }

@@ -54,4 +54,15 @@ export class ApiResponseService {
       });
     });
   }
+
+  getAdeudos(){
+    var newUrl = this.url+ 'adeudosUsuario/'+window.localStorage.getItem('id');
+    return new Promise((resolve, reject) =>{
+      this.http.get(newUrl).subscribe(data =>{
+          resolve (data);
+      },error=>{
+        if(error) throw error;
+      });
+    });
+  }
 }
