@@ -1,0 +1,55 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-menu-button autoHide="false"></ion-menu-button>
+        </ion-buttons>
+        <ion-title>Encuestas</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-card *ngIf="form.length > 0">
+        <ion-card-header>
+            <ion-item>
+                <ion-avatar slot="start">
+                    <img src="../../assets/img-app/icon_1024.png">
+                </ion-avatar>
+                <ion-label>
+                    <h3>Comercializadora Tianguiztli</h3>
+                    <p></p>
+
+                </ion-label>
+            </ion-item>
+            <ion-card-title>Selección de platillos</ion-card-title>
+            <ion-card-subtitle>Nos importa tu opinion por eso te pedimos contestar la siguiente encuesta.</ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>
+            <ion-list>
+                <ion-list-header>
+                    <h2>Desayunos</h2>
+                </ion-list-header>
+                <ion-item *ngFor="let e of desayunos">
+                    <ion-label class="ion-text-wrap">
+                        <p> {{e.platillo}}</p>
+                    </ion-label>
+                    <ion-checkbox slot="end" (ionChange)="cambiarRegVotos(e)" [(ngModel)]="e.isSelected"></ion-checkbox>
+                </ion-item>
+            </ion-list>
+            <ion-list>
+                <ion-list-header>
+                    <h2>Comidas</h2>
+                </ion-list-header>
+                <ion-item *ngFor="let e of comidas">
+                    <ion-label class="ion-text-wrap">
+                        <p>{{e.platillo}}</p>
+                    </ion-label>
+                    <ion-checkbox slot="end" (ionChange)="cambiarRegVotos(e)" [(ngModel)]="e.isSelected"></ion-checkbox>
+                </ion-item>
+            </ion-list>
+        </ion-card-content>
+        <section class=" full-width ">
+            <ion-button expand="full " color="primary" (click)="terminarEncuesta()">Mandar respuesta</ion-button>
+        </section>
+    </ion-card>
+
+</ion-content>

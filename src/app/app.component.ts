@@ -10,7 +10,7 @@ export class AppComponent {
   public appPages = [
     { title: 'Inicio', url: '/inicio', icon: 'home' },
     { title: 'Pagos', url: '/pagos-servicio', icon: 'cash' },
-
+    { title: 'Encuestas', url: '/encuestas', icon: 'checkbox' },
   ];
   constructor() {}
 }

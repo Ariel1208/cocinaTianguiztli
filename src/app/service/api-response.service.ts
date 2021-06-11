@@ -65,4 +65,51 @@ export class ApiResponseService {
       });
     });
   }
+
+  getEncuestas(){
+    var newUrl = this.url+ 'encuestasUsuario/'+window.localStorage.getItem('id');
+    return new Promise((resolve, reject) =>{
+      this.http.get(newUrl).subscribe(data =>{
+        
+          resolve (data[0]);
+      },error=>{
+        if(error) throw error;
+      });
+    });
+  }
+
+  getInfoEncuestas(){
+    var newUrl = this.url+ 'detallesEncuesta';
+    return new Promise((resolve, reject) =>{
+      this.http.get(newUrl).subscribe(data =>{
+          resolve (data);
+      },error=>{
+        if(error) throw error;
+      });
+    });
+  }
+
+  getInfoEncuestasDisponibles(){
+    var newUrl = this.url+ 'FechasEncuestas';
+    return new Promise((resolve, reject) =>{
+      this.http.get(newUrl).subscribe(data =>{
+          resolve (data[0]);
+      },error=>{
+        if(error) throw error;
+      });
+    });
+  }
+
+  addDatosEncuesta(data,tip){
+    var newUrl = this.url+ 'contestarEncuesta/'+tip
+    return new Promise((resolve, reject) =>{
+      this.http.post(newUrl,data).subscribe(data =>{
+          resolve (data);
+      },error=>{
+        if(error) throw error;
+      });
+    });
+  }
+
+  
 }
